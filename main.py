@@ -21,9 +21,15 @@ from flask import *
 app = Flask(__name__)
 
 
+class CategoryNode:
+    def __init__(self,href="",text="",children=[]):
+        self.href=href
+        self.text=text
+        self.children=children
+
 @app.route('/')
 def hello():
-    return render_template("base.html")
+    return render_template("base.html", category_root=CategoryNode("All","All",[CategoryNode("GameDev","GameDev"),CategoryNode("Web","Web"),CategoryNode("Algorithm","Algorithm")]))
 
 
 if __name__ == '__main__':

@@ -5,6 +5,20 @@
 	</head>
 	<body>
 		<p id="title">0xC0DEF's Blog</p>
+		<nav>
+			{% macro make_menu(node) -%}
+				<li><a href="{{node.href}}">{{node.text}}</a></li>
+				<ol>
+				{%- for child in node.children -%}
+					{{ make_menu(child) }}
+				{%- endfor -%}
+				</ol>
+			{%- endmacro %}
+			
+			<ol>
+				{{ make_menu(category_root) }}
+			</ol>
+		</nav>
 		<div id="content">
 		</div>
 	</body>
