@@ -1,25 +1,30 @@
 <!DOCTYPE html>
 <html>
 	<head>
-		<link rel="stylesheet" type="text/css" href="static/base.css">
+		<link rel="stylesheet" type="text/css" href="/static/base.css">
+		<script src="https://code.jquery.com/jquery-1.11.0.min.js"></script>
 	</head>
 	<body>
 		<p id="title">0xC0DEF's Blog</p>
 		<nav>
 			{% macro make_menu(node) -%}
-				<li><a href="{{node.href}}">{{node.text}}</a></li>
-				<ol>
+			<li>
+				<a href="{{node.href}}">{{node.text}}</a>
+				<ul>
 				{%- for child in node.children -%}
 					{{ make_menu(child) }}
 				{%- endfor -%}
-				</ol>
+				</ul>
+			</li>
 			{%- endmacro %}
 			
-			<ol>
+			<ul>
 				{{ make_menu(category_root) }}
-			</ol>
+			</ul>
 		</nav>
 		<div id="content">
+		{% block content %}
+		{% endblock %}
 		</div>
 	</body>
 </html>

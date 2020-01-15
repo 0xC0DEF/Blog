@@ -15,11 +15,9 @@
 # [START gae_python37_app]
 from flask import *
 
-
 # If `entrypoint` is not defined in app.yaml, App Engine will look for an app
 # called `app` in `main.py`.
-app = Flask(__name__)
-
+app = Flask(__name__, template_folder='static')
 
 class CategoryNode:
     def __init__(self,href="",text="",children=[]):
@@ -27,10 +25,25 @@ class CategoryNode:
         self.text=text
         self.children=children
 
+from os import listdir
+from os.path import isfile, join
+
+def build_category_tree(path, name):
+    if isfile("static/"+path):
+        return CategoryNode("/view/"+path, name)
+    return CategoryNode("/"+path, name, [build_category_tree(path+"/"+i, i) for i in listdir("static/"+path)])
+
 @app.route('/')
 def hello():
-    return render_template("base.html", category_root=CategoryNode("All","All",[CategoryNode("GameDev","GameDev"),CategoryNode("Web","Web"),CategoryNode("Algorithm","Algorithm")]))
+    return render_template("base.html", category_root=build_category_tree("All", "All"))
 
+@app.route('/view/<path:path>')
+def view_post(path):
+    return render_template("/"+path, category_root=build_category_tree(path, path.rsplit('/', 1)[-1]))
+
+@app.route('/<path:path>')
+def show_path(path):
+    return render_template("base.html", category_root=build_category_tree(path, path.rsplit('/', 1)[-1]))
 
 if __name__ == '__main__':
     # This is used when running locally only. When deploying to Google App
