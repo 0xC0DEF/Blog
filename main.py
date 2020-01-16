@@ -30,20 +30,23 @@ from os.path import isfile, join
 
 def build_category_tree(path, name):
     if isfile("static/"+path):
-        return CategoryNode("/view/"+path, name)
+        return CategoryNode("/"+path, name)
     return CategoryNode("/"+path, name, [build_category_tree(path+"/"+i, i) for i in listdir("static/"+path)])
 
 @app.route('/')
 def hello():
-    return render_template("base.html", category_root=build_category_tree("All", "All"))
-
-@app.route('/view/<path:path>')
-def view_post(path):
-    return render_template("/"+path, category_root=build_category_tree(path, path.rsplit('/', 1)[-1]))
+    return render_template("base.html", category_root=build_category_tree("all", "all"))
 
 @app.route('/<path:path>')
-def show_path(path):
-    return render_template("base.html", category_root=build_category_tree(path, path.rsplit('/', 1)[-1]))
+def render_path(path):
+    if isfile("static/"+path):
+        if request.args.get('only-content')=='true':
+            with open("static/"+path, 'r') as f:
+                return f.read()
+        else:
+            return render_template("/"+path, category_root=build_category_tree(path, path.rsplit('/', 1)[-1]))
+    else:
+        return render_template("base.html", category_root=build_category_tree(path, path.rsplit('/', 1)[-1]))
 
 if __name__ == '__main__':
     # This is used when running locally only. When deploying to Google App
