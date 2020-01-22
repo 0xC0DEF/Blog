@@ -45,9 +45,9 @@ def render_path(path):
             with open("static/"+doc_path+path, 'r') as f:
                 return f.read()
         else:
-            return render_template("/"+path, category_root=build_category_tree(path, path.rsplit('/', 1)[-1]))
+            return render_template("/"+path, category_root=build_category_tree("all", "all"))
     else:
-        return render_template("base.html", category_root=build_category_tree(path, path.rsplit('/', 1)[-1]))
+        return render_template("base.html", category_root=build_category_tree("all", "all"))
 
 if __name__ == '__main__':
     # This is used when running locally only. When deploying to Google App
