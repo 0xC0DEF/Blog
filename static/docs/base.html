@@ -2,11 +2,13 @@
 <html>
 	<head>
 		<link rel="stylesheet" type="text/css" href="/static/base.css">
+		<link rel="shortcut icon" href="/static/favicon.ico">
 		<script src="https://code.jquery.com/jquery-1.11.0.min.js"></script>
 	</head>
 	<body>
-		<p id="title">0xC0DEF's Blog</p>
 		<nav>
+			<p id="title">0xC0DEF's Blog</p>
+			<img id="profile_image" src="/static/profile_image.png" alt="Profile Image" width="100"/>
 			{% macro make_menu(node) -%}
 			<li>
 				<a href="{{node.href}}">{{node.text}}</a>

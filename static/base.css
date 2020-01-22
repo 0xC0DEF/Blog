@@ -6,5 +6,13 @@
 p{ font: 12px/14px BaseFont }
 
 #title{
+	font-size: large;
+}
 
+#profile_image{
+	border-radius: 50%;
+}
+
+#content{
+	display: flex
 }

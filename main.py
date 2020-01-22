@@ -17,7 +17,8 @@ from flask import *
 
 # If `entrypoint` is not defined in app.yaml, App Engine will look for an app
 # called `app` in `main.py`.
-app = Flask(__name__, template_folder='static')
+doc_path="docs/"
+app = Flask(__name__, template_folder='static/'+doc_path)
 
 class CategoryNode:
     def __init__(self,href="",text="",children=[]):
@@ -29,9 +30,9 @@ from os import listdir
 from os.path import isfile, join
 
 def build_category_tree(path, name):
-    if isfile("static/"+path):
+    if isfile("static/"+doc_path+path):
         return CategoryNode("/"+path, name)
-    return CategoryNode("/"+path, name, [build_category_tree(path+"/"+i, i) for i in listdir("static/"+path)])
+    return CategoryNode("/"+path, name, [build_category_tree(path+"/"+i, i) for i in listdir("static/"+doc_path+path)])
 
 @app.route('/')
 def hello():
@@ -39,9 +40,9 @@ def hello():
 
 @app.route('/<path:path>')
 def render_path(path):
-    if isfile("static/"+path):
+    if isfile("static/"+doc_path+path):
         if request.args.get('only-content')=='true':
-            with open("static/"+path, 'r') as f:
+            with open("static/"+doc_path+path, 'r') as f:
                 return f.read()
         else:
             return render_template("/"+path, category_root=build_category_tree(path, path.rsplit('/', 1)[-1]))
