@@ -23,6 +23,9 @@
 			<ul>
 				{{ make_menu(category_root) }}
 			</ul>
+
+			<img id="to_top" src="/static/top_btn.png" alt="Top Button" width=32 onclick="javascript: $(document).scrollTop(0);"/>
+			<img id="to_bottom" src="/static/bottom_btn.png" alt="Bottom Button" width=32 onclick="javascript: $(document).scrollTop($(document).height());"/>
 		</nav>
 		<div id="content">
 			<div id="content_aligner">

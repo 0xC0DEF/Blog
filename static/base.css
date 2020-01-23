@@ -21,13 +21,11 @@ p,li,a{ font: 14px/16px BaseFont }
 
 #title{
 	font-size: large;
-
 	text-align: center;
 }
 
 #profile_image{
 	border-radius: 50%;
-
 	display: block;
 	margin: 0px auto;
 }
