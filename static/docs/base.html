@@ -10,7 +10,7 @@
 			<p id="title">0xC0DEF's Blog</p>
 			<img id="profile_image" src="/static/profile_image.png" alt="Profile Image" width="100"/>
 			{% macro make_menu(node) -%}
-			<li>
+			<li class="side_li">
 				<a href="{{node.href}}">{{node.text}}</a>
 				<ul>
 				{%- for child in node.children -%}
