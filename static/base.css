@@ -3,7 +3,7 @@
 	src: url("ConcertOne.ttf");
 }
 
-p{ font: 12px/14px BaseFont }
+p,li,a{ font: 14px/16px BaseFont }
 
 .side_li{
     margin-left:-15px;
