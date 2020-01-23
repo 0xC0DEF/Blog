@@ -27,9 +27,10 @@ p{ font: 12px/14px BaseFont }
 	z-index:-1;
 	top: 0;
 	right:300px;
+	width: calc(100% - 300px);
 }
 
-#content_view{
-	margin-left: 25%;
-	width: 50%;
+#content_aligner{
+	margin: 0 auto;
+	width: 67%;
 }
