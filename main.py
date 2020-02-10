@@ -38,6 +38,10 @@ def build_category_tree(path, name):
 def hello():
     return render_template("base.html", category_root=build_category_tree("all", "all"))
 
+@app.route('/robots.txt')
+def robots():
+    return send_static_file('robots.txt')
+
 @app.route('/<path:path>')
 def render_path(path):
     if isfile("static/"+doc_path+path):
