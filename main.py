@@ -40,9 +40,16 @@ def hello():
 
 @app.route('/robots.txt')
 def robots():
-    return send_static_file('robots.txt')
+    return app.send_static_file('robots.txt')
 
-@app.route('/<path:path>')
+@app.route('/all')
+def on_all():
+    return render_path('all')
+
+@app.route('/all/<path:path>')
+def on_all_path(path):
+    return render_path('all/'+path)
+
 def render_path(path):
     if isfile("static/"+doc_path+path):
         if request.args.get('only-content')=='true':
