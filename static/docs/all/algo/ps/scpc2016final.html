@@ -2,7 +2,8 @@
 {% block content %}
 
 <h4>1. 재활용</h4>
-<p>절대 안돌아갈것 같은 MN^2이 돌아간다. 일단 저렇게 풀고, 점화식 형태가 Divide and Conquer Optimization같아서 적용해봤는데 잘 된다.</p>
+<p>절대 안돌아갈것 같은 MN^2이 돌아간다. 일단 MN^2으로 풀고, 점화식 형태가 Divide and Conquer Optimization같아서 적용해봤는데 잘 된다.</p>
+<p>dp[i][j] = i개의 쓰레기통으로 [0,j]의 집을 커버할때 (집:쓰레기통) 거리들 합의 최소</p>
 
 <!-- HTML generated using hilite.me --><div style="background: #272822; overflow:auto;width:auto;border:solid gray;border-width:.1em .1em .1em .8em;padding:.2em .6em;"><pre style="margin: 0; line-height: 125%"><span style="color: #75715e">#include &quot;Core.h&quot;</span>
 <span style="color: #75715e">//#include &quot;FastIO.h&quot;</span>
