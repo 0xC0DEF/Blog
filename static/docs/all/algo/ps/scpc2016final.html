@@ -4,58 +4,58 @@
 <h4>1. 재활용</h4>
 <p>절대 안돌아갈것 같은 MN^2이 돌아간다. 일단 저렇게 풀고, 점화식 형태가 Divide and Conquer Optimization같아서 적용해봤는데 잘 된다.</p>
 
-<p>
-#include "Core.h"
-//#include "FastIO.h"
-#include "PrettyIO.h"
-//#include "PrettyDebug.h"
+<!-- HTML generated using hilite.me --><div style="background: #272822; overflow:auto;width:auto;border:solid gray;border-width:.1em .1em .1em .8em;padding:.2em .6em;"><pre style="margin: 0; line-height: 125%"><span style="color: #75715e">#include &quot;Core.h&quot;</span>
+<span style="color: #75715e">//#include &quot;FastIO.h&quot;</span>
+<span style="color: #75715e">#include &quot;PrettyIO.h&quot;</span>
+<span style="color: #75715e">//#include &quot;PrettyDebug.h&quot;</span>
 
-int n,m;
-Arr<int> a;
-Arr<Arr<int>> dp,c;
+<span style="color: #66d9ef">int</span> <span style="color: #f8f8f2">n,m;</span>
+<span style="color: #f8f8f2">Arr</span><span style="color: #f92672">&lt;</span><span style="color: #66d9ef">int</span><span style="color: #f92672">&gt;</span> <span style="color: #f8f8f2">a;</span>
+<span style="color: #f8f8f2">Arr</span><span style="color: #f92672">&lt;</span><span style="color: #f8f8f2">Arr</span><span style="color: #f92672">&lt;</span><span style="color: #66d9ef">int</span><span style="color: #f92672">&gt;&gt;</span> <span style="color: #f8f8f2">dp,c;</span>
 
-int& f(int i, int j){
-	static int _0=0, _inf=inf<int>();
-	if(j==-1) return _0;
-	if(i==-1) return _inf;
-	return dp[i][j];
-}
+<span style="color: #66d9ef">int</span><span style="color: #f92672">&amp;</span> <span style="color: #f8f8f2">f(</span><span style="color: #66d9ef">int</span> <span style="color: #f8f8f2">i,</span> <span style="color: #66d9ef">int</span> <span style="color: #f8f8f2">j){</span>
+	<span style="color: #66d9ef">static</span> <span style="color: #66d9ef">int</span> <span style="color: #f8f8f2">_0</span><span style="color: #f92672">=</span><span style="color: #ae81ff">0</span><span style="color: #f8f8f2">,</span> <span style="color: #f8f8f2">_inf</span><span style="color: #f92672">=</span><span style="color: #f8f8f2">inf</span><span style="color: #f92672">&lt;</span><span style="color: #66d9ef">int</span><span style="color: #f92672">&gt;</span><span style="color: #f8f8f2">();</span>
+	<span style="color: #66d9ef">if</span><span style="color: #f8f8f2">(j</span><span style="color: #f92672">==-</span><span style="color: #ae81ff">1</span><span style="color: #f8f8f2">)</span> <span style="color: #66d9ef">return</span> <span style="color: #f8f8f2">_0;</span>
+	<span style="color: #66d9ef">if</span><span style="color: #f8f8f2">(i</span><span style="color: #f92672">==-</span><span style="color: #ae81ff">1</span><span style="color: #f8f8f2">)</span> <span style="color: #66d9ef">return</span> <span style="color: #f8f8f2">_inf;</span>
+	<span style="color: #66d9ef">return</span> <span style="color: #f8f8f2">dp[i][j];</span>
+<span style="color: #f8f8f2">}</span>
 
-void dnc(int i, int s, int e, int ks, int ke){
-	int mid=(s+e)/2, kk=ks;
-	hfor(k,ks,ke){
-		if(f(i,mid) > f(i-1,k)+c[k+1][mid])
-			f(i,mid)=f(i-1,k)+c[k+1][mid], kk=k;
-	}
-	if(e-s>1){
-		dnc(i,s,mid,ks,kk+1);
-		dnc(i,mid,e,kk,ke);
-	}
-}
+<span style="color: #66d9ef">void</span> <span style="color: #f8f8f2">dnc(</span><span style="color: #66d9ef">int</span> <span style="color: #f8f8f2">i,</span> <span style="color: #66d9ef">int</span> <span style="color: #f8f8f2">s,</span> <span style="color: #66d9ef">int</span> <span style="color: #f8f8f2">e,</span> <span style="color: #66d9ef">int</span> <span style="color: #f8f8f2">ks,</span> <span style="color: #66d9ef">int</span> <span style="color: #f8f8f2">ke){</span>
+	<span style="color: #66d9ef">int</span> <span style="color: #f8f8f2">mid</span><span style="color: #f92672">=</span><span style="color: #f8f8f2">(s</span><span style="color: #f92672">+</span><span style="color: #f8f8f2">e)</span><span style="color: #f92672">/</span><span style="color: #ae81ff">2</span><span style="color: #f8f8f2">,</span> <span style="color: #f8f8f2">kk</span><span style="color: #f92672">=</span><span style="color: #f8f8f2">ks;</span>
+	<span style="color: #f8f8f2">hfor(k,ks,ke){</span>
+		<span style="color: #66d9ef">if</span><span style="color: #f8f8f2">(f(i,mid)</span> <span style="color: #f92672">&gt;</span> <span style="color: #f8f8f2">f(i</span><span style="color: #f92672">-</span><span style="color: #ae81ff">1</span><span style="color: #f8f8f2">,k)</span><span style="color: #f92672">+</span><span style="color: #f8f8f2">c[k</span><span style="color: #f92672">+</span><span style="color: #ae81ff">1</span><span style="color: #f8f8f2">][mid])</span>
+			<span style="color: #f8f8f2">f(i,mid)</span><span style="color: #f92672">=</span><span style="color: #f8f8f2">f(i</span><span style="color: #f92672">-</span><span style="color: #ae81ff">1</span><span style="color: #f8f8f2">,k)</span><span style="color: #f92672">+</span><span style="color: #f8f8f2">c[k</span><span style="color: #f92672">+</span><span style="color: #ae81ff">1</span><span style="color: #f8f8f2">][mid],</span> <span style="color: #f8f8f2">kk</span><span style="color: #f92672">=</span><span style="color: #f8f8f2">k;</span>
+	<span style="color: #f8f8f2">}</span>
+	<span style="color: #66d9ef">if</span><span style="color: #f8f8f2">(e</span><span style="color: #f92672">-</span><span style="color: #f8f8f2">s</span><span style="color: #f92672">&gt;</span><span style="color: #ae81ff">1</span><span style="color: #f8f8f2">){</span>
+		<span style="color: #f8f8f2">dnc(i,s,mid,ks,kk</span><span style="color: #f92672">+</span><span style="color: #ae81ff">1</span><span style="color: #f8f8f2">);</span>
+		<span style="color: #f8f8f2">dnc(i,mid,e,kk,ke);</span>
+	<span style="color: #f8f8f2">}</span>
+<span style="color: #f8f8f2">}</span>
 
-signed main(){
-	int t; cin>>t;
-	cfor(ti,1,t){
-		cout<<"Case #"<<ti<<endl;
-		cin>>n>>m;
-		a=cinints(n);
-		sort(all(a));
-		dp=ARR(m,n,inf<int>());
-		c=ARR(n,n,0ll);
-		rep(i,n){
-			int l=0,r=0;
-			cfori(j,0,i){
-				l+=a[j];
-				if((i-j+1)%2)
-					l-=a[(i+j)/2];
-				c[j][i]=r-l;
-				if((i-j+1)%2)
-					r+=a[(i+j)/2];
-			}
-		}
-		rep(i,m) dnc(i,0,n,-1,n-1);
-		cout<<dp[m-1][n-1]<<endl;
-	}
-}
-</p>
+<span style="color: #66d9ef">signed</span> <span style="color: #f8f8f2">main(){</span>
+	<span style="color: #66d9ef">int</span> <span style="color: #f8f8f2">t;</span> <span style="color: #f8f8f2">cin</span><span style="color: #f92672">&gt;&gt;</span><span style="color: #f8f8f2">t;</span>
+	<span style="color: #f8f8f2">cfor(ti,</span><span style="color: #ae81ff">1</span><span style="color: #f8f8f2">,t){</span>
+		<span style="color: #f8f8f2">cout</span><span style="color: #f92672">&lt;&lt;</span><span style="color: #e6db74">&quot;Case #&quot;</span><span style="color: #f92672">&lt;&lt;</span><span style="color: #f8f8f2">ti</span><span style="color: #f92672">&lt;&lt;</span><span style="color: #f8f8f2">endl;</span>
+		<span style="color: #f8f8f2">cin</span><span style="color: #f92672">&gt;&gt;</span><span style="color: #f8f8f2">n</span><span style="color: #f92672">&gt;&gt;</span><span style="color: #f8f8f2">m;</span>
+		<span style="color: #f8f8f2">a</span><span style="color: #f92672">=</span><span style="color: #f8f8f2">cinints(n);</span>
+		<span style="color: #f8f8f2">sort(all(a));</span>
+		<span style="color: #f8f8f2">dp</span><span style="color: #f92672">=</span><span style="color: #f8f8f2">ARR(m,n,inf</span><span style="color: #f92672">&lt;</span><span style="color: #66d9ef">int</span><span style="color: #f92672">&gt;</span><span style="color: #f8f8f2">());</span>
+		<span style="color: #f8f8f2">c</span><span style="color: #f92672">=</span><span style="color: #f8f8f2">ARR(n,n,</span><span style="color: #ae81ff">0ll</span><span style="color: #f8f8f2">);</span>
+		<span style="color: #f8f8f2">rep(i,n){</span>
+			<span style="color: #66d9ef">int</span> <span style="color: #f8f8f2">l</span><span style="color: #f92672">=</span><span style="color: #ae81ff">0</span><span style="color: #f8f8f2">,r</span><span style="color: #f92672">=</span><span style="color: #ae81ff">0</span><span style="color: #f8f8f2">;</span>
+			<span style="color: #f8f8f2">cfori(j,</span><span style="color: #ae81ff">0</span><span style="color: #f8f8f2">,i){</span>
+				<span style="color: #f8f8f2">l</span><span style="color: #f92672">+=</span><span style="color: #f8f8f2">a[j];</span>
+				<span style="color: #66d9ef">if</span><span style="color: #f8f8f2">((i</span><span style="color: #f92672">-</span><span style="color: #f8f8f2">j</span><span style="color: #f92672">+</span><span style="color: #ae81ff">1</span><span style="color: #f8f8f2">)</span><span style="color: #f92672">%</span><span style="color: #ae81ff">2</span><span style="color: #f8f8f2">)</span>
+					<span style="color: #f8f8f2">l</span><span style="color: #f92672">-=</span><span style="color: #f8f8f2">a[(i</span><span style="color: #f92672">+</span><span style="color: #f8f8f2">j)</span><span style="color: #f92672">/</span><span style="color: #ae81ff">2</span><span style="color: #f8f8f2">];</span>
+				<span style="color: #f8f8f2">c[j][i]</span><span style="color: #f92672">=</span><span style="color: #f8f8f2">r</span><span style="color: #f92672">-</span><span style="color: #f8f8f2">l;</span>
+				<span style="color: #66d9ef">if</span><span style="color: #f8f8f2">((i</span><span style="color: #f92672">-</span><span style="color: #f8f8f2">j</span><span style="color: #f92672">+</span><span style="color: #ae81ff">1</span><span style="color: #f8f8f2">)</span><span style="color: #f92672">%</span><span style="color: #ae81ff">2</span><span style="color: #f8f8f2">)</span>
+					<span style="color: #f8f8f2">r</span><span style="color: #f92672">+=</span><span style="color: #f8f8f2">a[(i</span><span style="color: #f92672">+</span><span style="color: #f8f8f2">j)</span><span style="color: #f92672">/</span><span style="color: #ae81ff">2</span><span style="color: #f8f8f2">];</span>
+			<span style="color: #f8f8f2">}</span>
+		<span style="color: #f8f8f2">}</span>
+		<span style="color: #f8f8f2">rep(i,m)</span> <span style="color: #f8f8f2">dnc(i,</span><span style="color: #ae81ff">0</span><span style="color: #f8f8f2">,n,</span><span style="color: #f92672">-</span><span style="color: #ae81ff">1</span><span style="color: #f8f8f2">,n</span><span style="color: #f92672">-</span><span style="color: #ae81ff">1</span><span style="color: #f8f8f2">);</span>
+		<span style="color: #f8f8f2">cout</span><span style="color: #f92672">&lt;&lt;</span><span style="color: #f8f8f2">dp[m</span><span style="color: #f92672">-</span><span style="color: #ae81ff">1</span><span style="color: #f8f8f2">][n</span><span style="color: #f92672">-</span><span style="color: #ae81ff">1</span><span style="color: #f8f8f2">]</span><span style="color: #f92672">&lt;&lt;</span><span style="color: #f8f8f2">endl;</span>
+	<span style="color: #f8f8f2">}</span>
+<span style="color: #f8f8f2">}</span>
+</pre></div>
+
 {% endblock %}
