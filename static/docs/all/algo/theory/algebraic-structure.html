@@ -1,13 +1,19 @@
-ps를 하다보면 여러가지 대수적 구조들을 만나게 되는데, 이것들을 잘 정리해두면 알고리즘이나 자료구조를 이해하는데 도움이 될 듯해 정리해본다.
+{% extends "base.html" %}
+{% block content %}
+<p>ps를 하다보면 여러가지 대수적 구조들을 만나게 되는데, 이것들을 잘 정리해두면 알고리즘이나 자료구조를 이해하는데 도움이 될 듯해 정리해본다.</p>
 
-*Monoid
-Segment Tree는 2가지 모노이드를 필요로 하는데, 나는 Q(Query Monoid)와 U(Update Monoid)라고 부르겠다. Lazy Update의 경우, 업데이트할 노드를 node, 업데이트값을 x라 하면 U.f( node.val, Q.f(...Q.f(id,x)...,x) )형태의 합성함수를 빠르게 계산해야 하는데, Q.fn(x,cnt)형태의 함수를 빠르게 계산할 수 있으면 된다. fn의 몇가지 예시: f=id+2는 fn=id+(2*cnt), f=min(id,x)=x는 fn=min(id,x)=x(그대로다) 등등.
-Max-Assign LazySeg 코드: http://boj.kr/16be93a5836d421fa5958d94d2c158ec
+<h2>Monoid</h2>
+<p>Segment Tree는 2가지 모노이드를 필요로 하는데, 나는 Q(Query Monoid)와 U(Update Monoid)라고 부르겠다. Lazy Update의 경우, 업데이트할 노드를 node, 업데이트값을 x라 하면 U.f( node.val, Q.f(...Q.f(id,x)...,x) )형태의 합성함수를 빠르게 계산해야 하는데, Q.fn(x,cnt)형태의 함수를 빠르게 계산할 수 있으면 된다. fn의 몇가지 예시: f=id+2는 fn=id+(2*cnt), f=min(id,x)=x는 fn=min(id,x)=x(그대로다) 등등.</p>
+<a href="http://boj.kr/16be93a5836d421fa5958d94d2c158ec">Max-Assign LazySeg 코드</a>
 
-*Group: Burnside Lemma
+<h2>Group</h2>
+<p>Burnside Lemma</p>
 
-*Ring, Field, etc: 게임이론에 Surreal, 정수론에 Ideal, Mobious Inversion같은게 있지만 해당 분야는 필자가 잘 모르는 관계로 생략한다.
+<h2>Ring, Field, etc</h2>
+<p>게임이론에 Surreal, 정수론에 Ideal, Mobious Inversion같은게 있지만 해당 분야는 필자가 잘 모르는 관계로 생략한다.</p>
 
-*Partial Ordering and Lattice: recurrence, <a href="/all/algo/theory/DP-TopDown-BottomUP.html">DP</a>
+<h2>Partial Ordering and Lattice</h2>
+<p>recurrence, <a href="/all/algo/theory/DP-TopDown-BottomUP.html">DP</a></p>
 
-이외에도 여러곳에 다양한 대수적 구조가 숨어있으니 관심있다면 다들 찾아보길 바란다.
+<p>이외에도 여러곳에 다양한 대수적 구조가 숨어있으니 관심있다면 다들 찾아보길 바란다.</p>
+{% endblock %}
