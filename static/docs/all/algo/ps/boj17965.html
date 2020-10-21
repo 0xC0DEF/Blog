@@ -1,0 +1,5 @@
+{% extends "base.html" %}
+{% block content %}
+<h3><a href="https://www.acmicpc.net/problem/17965">Absolute Game</a></h3>
+<p>a의 각 원소에 대해 제일 가까운 b원소를 매칭해보자. 후공은 Perfect Matching이 아니면 그냥 남는거 아무거나 지우면 된다. Perfect Matching이면 선공이 어떤 a를 지운 후에 매칭되지 않는 b원소가 존재하고, 그것을 지우는 전략을 쓰면 최소가 된다. 선공의 경우 뭔짓을 하던 후공은 최종적으로 남는 a원소에 제일 가까운 원소 b를 방금 전략으로 남길 수 있으므로, 최종적으로 남는 a원소는 제일 가까운 b원소가 제일 먼것을 선택하도록 한다.</p>
+{% endblock %}
