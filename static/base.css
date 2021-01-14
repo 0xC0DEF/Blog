@@ -3,11 +3,11 @@
 	src: url("ConcertOne.ttf");
 }
 
-p,li,a{ font: 18px/24px BaseFont }
+p,li,a{ font: 18px/24px BaseFont; /*color:red;*/}
 
 .side_li{
-    margin-left:-15px;
-	list-style-image: url('side_li.png');
+	margin-left:-20px;
+	list-style: none;
 }
 
 #side_bar{
@@ -39,9 +39,24 @@ p,li,a{ font: 18px/24px BaseFont }
 	width: calc(100% - 300px);
 	height: 100%;
 	overflow: auto;
+	background-color: darkgrey;
 }
 
 #content_aligner{
 	margin: 0 auto;
+	padding: 15px;
 	width: 67%;
+	background-color: white;
+}
+
+#to_top{
+	position: fixed;
+	bottom: 50px;
+	right: 310px;
+}
+
+#to_bottom{
+	position: fixed;
+	bottom: 10px;
+	right: 310px;
 }

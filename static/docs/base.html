@@ -11,6 +11,7 @@
 			<img id="profile_image" src="/static/profile_image.gif" alt="Profile Image" width="100"/>
 			{% macro make_menu(node) -%}
 			<li class="side_li">
+				<img src="/static/side_li.png" onclick="javascript: var x=$(this).parent().children().filter('ul'); if(x.is(':hidden')) x.show(); else x.hide();"/>
 				<a href="{{node.href}}">{{node.text}}</a>
 				<ul>
 				{%- for child in node.children -%}
