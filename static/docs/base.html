@@ -19,7 +19,7 @@
 					if(x.is(':hidden')) x.show(), $(this).attr('src','/static/side_li_close.png');
 					else x.hide(), $(this).attr('src','/static/side_li_open.png');"/>
 				{% else %}
-				<img src="/static/side_li_doc.png"/>
+				<img src="/static/side_li_doc.png" onclick="javascript: window.location='{{node.href}}'"/>
 				{% endif %}
 				<a class="side_li_a" href="{{node.href}}">{{node.text}}</a>
 				<ul>
