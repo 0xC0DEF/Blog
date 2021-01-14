@@ -7,15 +7,21 @@
 	</head>
 	<body>
 		<nav id="side_bar">
-			<p id="title">0xC0DEF's Blog</p>
+			<br/>
+			<a id="title" href="/">0xC0DEF's Blog</a>
+			<br/>
 			<img id="profile_image" src="/static/profile_image.gif" alt="Profile Image" width="100"/>
 			{% macro make_menu(node) -%}
 			<li class="side_li">
+				{% if node.children %}
 				<img src="/static/side_li_close.png" onclick=
 					"javascript: var x=$(this).parent().children().filter('ul');
 					if(x.is(':hidden')) x.show(), $(this).attr('src','/static/side_li_close.png');
 					else x.hide(), $(this).attr('src','/static/side_li_open.png');"/>
-				<a href="{{node.href}}">{{node.text}}</a>
+				{% else %}
+				<img src="/static/side_li_doc.png"/>
+				{% endif %}
+				<a class="side_li_a" href="{{node.href}}">{{node.text}}</a>
 				<ul>
 				{%- for child in node.children -%}
 					{{ make_menu(child) }}

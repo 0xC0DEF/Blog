@@ -10,6 +10,11 @@ p,li,a{ font: 18px/24px BaseFont; /*color:red;*/}
 	list-style: none;
 }
 
+.side_li_a{
+	text-decoration: none;
+	color: black;
+}
+
 #side_bar{
 	position: fixed;
 	top: 0;
@@ -21,12 +26,14 @@ p,li,a{ font: 18px/24px BaseFont; /*color:red;*/}
 }
 
 #title{
-	font-size: large;
+	font-size: 180%;
 	text-align: center;
+	text-decoration: none;
+	color: black;
+	display: block;
 }
 
 #profile_image{
-	border-radius: 50%;
 	display: block;
 	margin: 0px auto;
 }
