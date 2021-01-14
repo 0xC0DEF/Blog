@@ -43,7 +43,7 @@ p,li,a{ font: 18px/24px BaseFont; /*color:red;*/}
 }
 
 #content_aligner{
-	margin: 0 auto;
+	margin: 50px auto;
 	padding: 15px;
 	width: 67%;
 	background-color: white;
@@ -52,11 +52,11 @@ p,li,a{ font: 18px/24px BaseFont; /*color:red;*/}
 #to_top{
 	position: fixed;
 	bottom: 50px;
-	right: 310px;
+	right: 320px;
 }
 
 #to_bottom{
 	position: fixed;
 	bottom: 10px;
-	right: 310px;
+	right: 320px;
 }
