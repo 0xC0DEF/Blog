@@ -1,8 +1,13 @@
 {% extends "base.html" %}
 {% block content %}
+<script type="text/x-mathjax-config">MathJax.Hub.Config({tex2jax: {inlineMath: [['$','$'], ['\\(','\\)']]}});</script>
+<script src="//cdn.mathjax.org/mathjax/latest/MathJax.js?config=TeX-AMS-MML_HTMLorMML"></script>
 <h3><a href="https://www.acmicpc.net/problem/18928">Joy With Cookies</a></h3>
-<p>좌표배열이 주어졌을 때, x와y 둘 다 strict하게 작아지게 배열할 수 있는 최대 길이는 x로 정렬했을때의 y수열 lis와 같다. 정확히는 (x,-y)로 정렬해야 같은 x값에 대해 strict하게 작은 lis가 구해진다. 그러므로 각 stack은 해당 stack 초기값의 lis-1을 길이로 하는 님게임 돌더미와 같다.</p>
-<p>후공은 시작전에 각 stack 초기값 평면을 90도 회전시킬 수 있으므로, 2^k만큼의 조합이 존재한다. 님게임으로 리덕션이 되므로, 이 조합 중 xor이 0이 되는 조합이 존재하면 후공이 승리할 수 있다.</p>
-<p>그대로는 풀기 힘들고, 식정리를 한번 해야 한다. 모든 초기값(회전안한)평면의 lis를 xor한 값을 m이라고 하자. m이 각 초기값 평면의 두 값(회전안한 값, 회전한 값)의 xor들로 재구성될 수 있다면,</p>
-<p>(작성중)</p>
+<p>직사각형이 주어졌을 때, x와y 둘 다 strict하게 작아지게 배열할 수 있는 최대 길이는 (x,-y)로 정렬한 y수열의 (strict)LIS와 같다. 또한 각 stack은 해당 stack 초기값의 LIS-1크기의 님게임 돌더미와 같다.(=Grundy Number가 LIS-1)</p>
+<p>후공은 시작전에 각 stack의 초기값 쿠키를 90도 회전시킬 수 있으므로, 각 쿠기마다 회전한경우와 회전하지 않은경우의 LIS를 구해야 한다. 이는 세그먼트 트리와 PQ로 $O(nlogMAX)$정도에 구할 수 있다.</p>
+<p>또한 님게임으로 리덕션이 되므로, 2^k만큼의 경우의 수 중이 xor이 0이 되는 조합이 존재하면 후공이 승리할 수 있다.</p>
+<p>쿠키i의 (회전/회전하지 않은) Grundy Number를 각각 $g_i, h_i$라고 하자. 인덱스 중첩해서 쓰기 귀찮으니, WLOG, 선택한 k개의 쿠키도 맨앞부터 k개라고 가정하자. 우리가 찾아야 하는 것은 $(g_0 \vee h_0)\oplus(g_1 \vee h_1)\oplus ... \oplus(g_k \vee h_k)=0$을 만족하는 경우가 있는지 여부다. ($(a \vee b)$는 논리연산or이 아니라, 값a를 쓰거나 값b를 쓰거나의 두 경우를 나타내는 것으로 사용했다.)</p>
+<p>$h_i=g_i \oplus ( g_i \oplus h_i)$이고, $\oplus$가 $Z_2$상의 덧셈이므로, k차원 벡터 x와 함께 위 식을 체 $Z_2$위에서 $(g_0 + x_0 \cdot (g_0 + h_0) )+(g_1 + x_1 \cdot(g_1 + h_1))+ ... +(g_k + x_k \cdot(g_k + h_k))=0$으로 더 Formal하게 표현할 수 있다. 이제 $Z_2^k$상의 벡터로 표현하고 적당히 이항시켜주면 $g = x \cdot h$인 x가 존재하는가 판별하는 문제가 된다. 이는 잘 알려진 <a href="https://codeforces.com/blog/entry/68953">xor basis 트릭</a>을 사용하면 $O(k log MAX)에 풀 수 있다.</p>
+<p>따라서 총 O(n log MAX)에 해결할 수 있다.</p>
+<p>게임이론과 선형대수와 LIS를 자연스럽게 엮어낸 재밌고 좋은 문제였다.</p>
 {% endblock %}
