@@ -3,7 +3,11 @@
 	src: url("ConcertOne.ttf");
 }
 
-p,li,a{ font: 18px/24px BaseFont; /*color:red;*/}
+h1{ font: 40px/40px BaseFont; /*color:red;*/}
+h2{ font: 35px/35px BaseFont; /*color:red;*/}
+h3{ font: 30px/30px BaseFont; /*color:red;*/}
+h4{ font: 23px/23px BaseFont; /*color:red;*/}
+p,li,a{ font: 18px/20px BaseFont; /*color:red;*/}
 
 .side_li{
 	margin-left:-20px;
