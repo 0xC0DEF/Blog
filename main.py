@@ -14,7 +14,7 @@ from os.path import isfile, join
 def build_category_tree(path, name):
     if isfile("static/"+doc_path+path):
         return CategoryNode("/"+path, name)
-    return CategoryNode("/"+path, name, [build_category_tree(path+"/"+i, i) for i in listdir("static/"+doc_path+path)])
+    return CategoryNode("/"+path, name, [build_category_tree(path+"/"+i, i) for i in sorted(listdir("static/"+doc_path+path))])
 
 @app.route('/')
 def hello():
