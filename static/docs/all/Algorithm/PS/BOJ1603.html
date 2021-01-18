@@ -1,6 +1,6 @@
 {% extends "base.html" %}
 {% block content %}
-<h3><a href="https://www.acmicpc.net/problem/1603">작은 정사각형</a></h3>
+<a href="https://www.acmicpc.net/problem/1603"><h3>작은 정사각형</h3></a>
 <p>2*2 블럭을 홀수번째 줄에만 놓아야 한다는 조건에 의해 게임판을 2*M으로 분리할 수 있다. 여기까지만 해도 bitmask DP로 Grundy Number를 구해 풀 수 있다.</p>
 <p>분리된 각 게임판에 대해서도 2*2 블럭을 놓으면 좌우 2개의 게임판, 1*1 블럭을 놓으면 좌우 2개의 게임판과 크기 1짜리 게임판(=1*1 하나만 놓을 수 있는 게임판=Grundy Number가 1인 게임판)으로 나누어짐을 관찰하면 0ms에 풀 수 있다.</p>
 {% endblock %}

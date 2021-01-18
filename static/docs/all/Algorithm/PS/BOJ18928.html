@@ -2,7 +2,7 @@
 {% block content %}
 <script type="text/x-mathjax-config">MathJax.Hub.Config({tex2jax: {inlineMath: [['$','$'], ['\\(','\\)']]}});</script>
 <script src="//cdn.mathjax.org/mathjax/latest/MathJax.js?config=TeX-AMS-MML_HTMLorMML"></script>
-<h3><a href="https://www.acmicpc.net/problem/18928">Joy With Cookies</a></h3>
+<a href="https://www.acmicpc.net/problem/18928"><h3>Joy With Cookies</h3></a>
 <p>직사각형이 주어졌을 때, x와y 둘 다 strict하게 작아지게 배열할 수 있는 최대 길이는 (x,-y)로 정렬한 y수열의 (strict)LIS와 같다. 또한 각 stack은 해당 stack 초기값의 LIS-1크기의 님게임 돌더미와 같다.(=Grundy Number가 LIS-1)</p>
 <p>후공은 시작전에 각 stack의 초기값 쿠키를 90도 회전시킬 수 있으므로, 각 쿠기마다 회전한경우와 회전하지 않은경우의 LIS를 구해야 한다. 이는 세그먼트 트리와 PQ로 $O(nlogMAX)$정도에 구할 수 있다.</p>
 <p>또한 님게임으로 리덕션이 되므로, 2^k만큼의 경우의 수 중이 xor이 0이 되는 조합이 존재하면 후공이 승리할 수 있다.</p>

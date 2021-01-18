@@ -1,6 +1,6 @@
 {% extends "base.html" %}
 {% block content %}
-<h3><a href="https://www.acmicpc.net/problem/16238">독수리</a></h3>
+<a href="https://www.acmicpc.net/problem/16238"><h3>독수리</h3></a>
 <p>k개의 양을 골라보면 항상 도망가지 않게 먹을 방법이 존재한다. 또한 그 값은 k개 수의 합 - (0+1+...+k-1)이다.</p>
 <p>k개를 먹을 때 - (0+1+...+k-1)은 일정하므로, 선택하는 k개의 수를 최대화 하면 최대이다.</p>
 <p>따라서 내림차순으로 정렬해서 a[i]-i가 음수가 아닐때까지 계속 선택해주는 그리디가 가능하다.</p>
