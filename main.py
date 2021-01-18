@@ -20,15 +20,6 @@ def build_category_tree(path, name):
 def hello():
 	return render_template("main.html", category_root=build_category_tree("all", "all"))
 
-@app.route('/test')
-def test():
-	x=[]
-	with open("static/docs/main.html", 'r') as f:
-		x=f.readlines()
-	with open("static/docs/main.html", 'w') as f:
-		f.writelines(x[:-1]+["<p>test</p>\n{% endblock %}\n"])
-	return render_template("main.html", category_root=build_category_tree("all", "all"))
-
 @app.route('/robots.txt')
 def robots():
 	return app.send_static_file('robots.txt')
