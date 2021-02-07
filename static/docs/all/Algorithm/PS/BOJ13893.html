@@ -7,4 +7,5 @@ MathJax.Hub.Config({tex2jax: {inlineMath: [['$','$'], ['\\(','\\)']]}});
 <a href="https://www.acmicpc.net/problem/13893"><h3>Dictionary Game</h3></a>
 <p>입력으로 주어지는 문자열들로 Trie를 만들면 그 자체가 Green Hackenbush Tree가 되고, Green Hackenbush Tree의 Grundy Number을 구하는 방법은 이미 알려져 있다.</p>
 <p>Ground에 붙어있는 노드를 루트라고 하자. g(v)를 정점v를 루트로 하는 서브트리의 Grundy Number라고 할 때, $g(v)=\{g(ch_1)+1\}\oplus\{g(ch_2)+1\}\oplus ...$ 이다.</p>
+<p>Green Hackenbush는 임의의 무향그래프일때도 다항시간(아마도 O(n)이었던듯)에 해결할 수 있다. IPSC2003 G번 참고.</p>
 {% endblock %}
