@@ -1,48 +1,56 @@
 <!DOCTYPE html>
 <html>
-	<head>
-		<link rel="stylesheet" type="text/css" href="/static/base.css">
-		<link rel="shortcut icon" href="/static/favicon.ico">
-		<script src="https://code.jquery.com/jquery-1.11.0.min.js"></script>
-		<meta name="google-site-verification" content="XNKxfrgT9fsTTnsCs2cVmDd1Ys-eThQbz0S9CC-T11I" />
-	</head>
-	<body>
-		<nav id="side_bar">
-			<br/>
-			<a id="title" href="/">0xC0DEF's Blog</a>
-			<br/>
-			<img id="profile_image" src="/static/profile_image.gif" alt="Profile Image" width="100"/>
-			{% macro make_menu(node) -%}
-			<li class="side_li">
-				{% if node.children %}
-				<img src="/static/side_li_close.png" onclick=
-					"javascript: var x=$(this).parent().children().filter('ul');
-					if(x.is(':hidden')) x.show(), $(this).attr('src','/static/side_li_close.png');
-					else x.hide(), $(this).attr('src','/static/side_li_open.png');"/>
-				{% else %}
-				<img src="/static/side_li_doc.png" onclick="javascript: window.location='{{node.href}}'"/>
-				{% endif %}
-				<a class="side_li_a" href="{{node.href}}">{{node.text}}</a>
-				<ul>
-				{%- for child in node.children -%}
-					{{ make_menu(child) }}
-				{%- endfor -%}
-				</ul>
-			</li>
-			{%- endmacro %}
-			
-			<ul>
-				{{ make_menu(category_root) }}
-			</ul>
 
-			<img id="to_top" src="/static/top_btn.png" alt="Top Button" width=32 onclick="javascript: $('#content').scrollTop(0);"/>
-			<img id="to_bottom" src="/static/bottom_btn.png" alt="Bottom Button" width=32 onclick="javascript: $('#content').scrollTop($('#content_aligner').height());"/>
-		</nav>
-		<div id="content">
-			<div id="content_aligner">
-				{% block content %}
-				{% endblock %}
-			</div>
+<head>
+	<link rel="stylesheet" type="text/css" href="/static/base.css">
+	<link rel="shortcut icon" href="/static/favicon.ico">
+	<script src="https://code.jquery.com/jquery-1.11.0.min.js"></script>
+	<meta name="viewport" content="width=device-width, initial-scale=1.0">
+	<meta name="google-site-verification" content="XNKxfrgT9fsTTnsCs2cVmDd1Ys-eThQbz0S9CC-T11I" />
+</head>
+
+<body>
+	<img id="side_bar_button" src="/static/side_menu.png" />
+	<nav id="side_bar">
+		<br />
+		<br />
+		<a id="title" href="/">0xC0DEF's Blog</a>
+		<br />
+		<img id="profile_image" src="/static/profile_image.gif" alt="Profile Image" width="100" />
+		{% macro make_menu(node) -%}
+		<li class="side_li">
+			{% if node.children %}
+			<img src="/static/side_li_close.png" onclick="javascript: var x=$(this).parent().children().filter('ul');
+					if(x.is(':hidden')) x.show(), $(this).attr('src','/static/side_li_close.png');
+					else x.hide(), $(this).attr('src','/static/side_li_open.png');" />
+			{% else %}
+			<img src="/static/side_li_doc.png" onclick="javascript: window.location='{{node.href}}'" />
+			{% endif %}
+			<a class="side_li_a" href="{{node.href}}">{{node.text}}</a>
+			<ul>
+				{%- for child in node.children -%}
+				{{ make_menu(child) }}
+				{%- endfor -%}
+			</ul>
+		</li>
+		{%- endmacro %}
+
+		<ul>
+			{{ make_menu(category_root) }}
+		</ul>
+	</nav>
+	<!--
+	<img id="to_top" src="/static/top_btn.png" alt="Top Button" width=32
+		onclick="javascript: $('#content').scrollTop(0);" />
+	<img id="to_bottom" src="/static/bottom_btn.png" alt="Bottom Button" width=32
+		onclick="javascript: $('#content').scrollTop($('#content_aligner').height());" />
+	-->
+	<div id="content">
+		<div id="content_aligner">
+			{% block content %}
+			{% endblock %}
 		</div>
-	</body>
+	</div>
+</body>
+
 </html>
