@@ -9,25 +9,33 @@
 	<meta name="google-site-verification" content="XNKxfrgT9fsTTnsCs2cVmDd1Ys-eThQbz0S9CC-T11I" />
 
 	<script>
-	function setCookie(name,value,days=1) {
-		var expires = "";
-		if (days) {
-			var date = new Date();
-			date.setTime(date.getTime() + (days*24*60*60*1000));
-			expires = "; expires=" + date.toUTCString();
+		function side_li_icon_click(self, identifier) {
+			var x = self.parent().children('ul');
+			// alert(self.prop('nodeName'))
+			// alert(self.cl
+			function getVal(){
+				var value=parseInt(localStorage.getItem(identifier))
+				if(isNaN(value)) value=1
+				return value
+			}
+			localStorage.setItem(identifier, (getVal()+1)%2)
+			if (getVal() % 2 === 0) {
+				let h=0;
+				x.height(x.children().each(()=>h+=$(this).height())+'px');
+				x.css('opacity',1);
+				self.attr('src', '/static/side_li_close.png');
+			} else {
+				x.height(0);
+				x.css('opacity',0);
+				self.attr('src', '/static/side_li_open.png');
+			}
 		}
-		document.cookie = name + "=" + (value || "")  + expires + "; path=/";
-	}
-	function getCookie(name) {
-		var nameEQ = name + "=";
-		var ca = document.cookie.split(';');
-		for(var i=0;i < ca.length;i++) {
-			var c = ca[i];
-			while (c.charAt(0)==' ') c = c.substring(1,c.length);
-			if (c.indexOf(nameEQ) == 0) return c.substring(nameEQ.length,c.length);
+		window.onload = ()=>{
+			//alert(1)
+			//$('img.directory').each((idx,item)=>{alert($(item).prop('nodeName'))})
+			$('img.directory').click()
+			$('img.directory').click()
 		}
-		return null;
-	}
 	</script>
 </head>
 
@@ -42,12 +50,9 @@
 		{% macro make_menu(node) -%}
 		<li class="side_li">
 			{% if node.children %}
-			<img src="/static/side_li_close.png" onclick="javascript: var x=$(this).parent().children().filter('ul');
-					//if(getCookie(x.
-					if(x.is(':hidden')) x.show(), $(this).attr('src','/static/side_li_close.png');
-					else x.hide(), $(this).attr('src','/static/side_li_open.png');" />
+			<img src="/static/side_li_close.png" class="directory" onclick="side_li_icon_click($(this),'{{node.href}}')" />
 			{% else %}
-			<img src="/static/side_li_doc.png" onclick="javascript: window.location='{{node.href}}'" />
+			<img src="/static/side_li_doc.png" onclick="window.location='{{node.href}}'" />
 			{% endif %}
 			<a class="side_li_a" href="{{node.href}}">{{node.text}}</a>
 			<ul>
