@@ -9,7 +9,7 @@ class CategoryNode:
 		self.children=children
 
 from os import listdir
-from os.path import isfile, join
+from os.path import isfile, join, isdir
 
 def build_category_tree(path, name):
 	if isfile("static/"+doc_path+path):
@@ -32,6 +32,10 @@ def on_all():
 def on_all_path(path):
 	return render_path('all/'+path)
 
+@app.errorhandler(404)
+def page404(e):
+	return render_template("404.html", category_root=build_category_tree("all", "all")),404
+
 def render_path(path):
 	if isfile("static/"+doc_path+path):
 		if request.args.get('only-content')=='true':
@@ -39,9 +43,11 @@ def render_path(path):
 				return f.read()
 		else:
 			return render_template("/"+path, category_root=build_category_tree("all", "all"))
-	else:
+	elif isdir("static/"+doc_path+path):
 		dc=[("/"+path+"/"+i, i) for i in listdir("static/"+doc_path+path)]
 		return render_template("directory.html", category_root=build_category_tree("all", "all"), directory_content=dc)
+	else:
+		return page404(None)
 
 if __name__ == '__main__':
 	# This is used when running locally only.
