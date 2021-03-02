@@ -23,15 +23,11 @@
 				let h = 0;
 				x.height(x.children().each(() => h += $(this).height()) + 'px');
 				x.css('opacity', 1);
-				x.css('display', 'inherit');
-				x.css('list-style', 'none');
-				self.attr('src', '/static/side_li_close.png');
+				x.css('pointer-events','inherit');
 			} else {
 				x.height(0);
 				x.css('opacity', 0);
-				x.css('display', 'none');
-				x.css('list-style', 'none');
-				self.attr('src', '/static/side_li_open.png');
+				x.css('pointer-events','none');
 			}
 		}
 		window.onload = () => {
