@@ -64,11 +64,6 @@ p,li,a{ font: 20px/25px BaseFont; /*color:red;*/}
 	display: block;
 }
 
-#profile_image{
-	display: block;
-	margin: 0px auto;
-}
-
 #content{
 	position: absolute;
 	z-index:-1;
