@@ -1,6 +1,6 @@
 runtime: python37
 
-default_expiration: "1s"
+default_expiration: "1d 0h 0m 0s"
 
 handlers:
   - url: /static
