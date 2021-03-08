@@ -38,10 +38,11 @@ def page404(e):
 
 def render_path(path):
 	if isfile("static/"+doc_path+path):
-		return render_template("/"+path, category_root=build_category_tree("all", "all"))
+		print(path.split("/."))
+		return render_template("/"+path, category_root=build_category_tree("all", "all"), article_name=path.split("/")[-1].split(".")[-2])
 	elif isdir("static/"+doc_path+path):
 		dc=[("/"+path+"/"+i, i) for i in listdir("static/"+doc_path+path)]
-		return render_template("directory.html", category_root=build_category_tree("all", "all"), directory_content=dc)
+		return render_template("directory.html", category_root=build_category_tree("all", "all"), article_name=path.split("/")[-1], directory_content=dc)
 	else:
 		return page404(None)
 
