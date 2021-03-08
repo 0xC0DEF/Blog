@@ -38,11 +38,7 @@ def page404(e):
 
 def render_path(path):
 	if isfile("static/"+doc_path+path):
-		if request.args.get('only-content')=='true':
-			with open("static/"+doc_path+path, 'r') as f:
-				return f.read()
-		else:
-			return render_template("/"+path, category_root=build_category_tree("all", "all"))
+		return render_template("/"+path, category_root=build_category_tree("all", "all"))
 	elif isdir("static/"+doc_path+path):
 		dc=[("/"+path+"/"+i, i) for i in listdir("static/"+doc_path+path)]
 		return render_template("directory.html", category_root=build_category_tree("all", "all"), directory_content=dc)
