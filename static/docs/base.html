@@ -74,12 +74,12 @@
 	<img id="to_bottom" src="/static/bottom_btn.png" alt="Bottom Button" width=32
 		onclick="javascript: $('#content').scrollTop($('#content_aligner').height());" />
 	-->
-	<div id="content">
+	<article id="content">
 		<div id="content_aligner">
 			{% block content %}
 			{% endblock %}
 		</div>
-	</div>
+	</article>
 </body>
 <img src='/static/fox.png' style='left:5px;bottom:5px;position:fixed;opacity:0.75;' />
 
