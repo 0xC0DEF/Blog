@@ -18,7 +18,7 @@ def build_category_tree(path, name):
 
 @app.route('/')
 def hello():
-	return render_template("main.html", category_root=build_category_tree("all", "all"))
+	return render_template("main.html", category_root=build_category_tree("all", "all"), article_name='loboprix.com')
 
 @app.route('/robots.txt')
 def robots():
@@ -34,7 +34,7 @@ def on_all_path(path):
 
 @app.errorhandler(404)
 def page404(e):
-	return render_template("404.html", category_root=build_category_tree("all", "all")),404
+	return render_template("404.html", category_root=build_category_tree("all", "all"), article_name='ERROR 404'),404
 
 def render_path(path):
 	if isfile("static/"+doc_path+path):
