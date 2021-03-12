@@ -9,7 +9,7 @@
 	<meta name="google-site-verification" content="XNKxfrgT9fsTTnsCs2cVmDd1Ys-eThQbz0S9CC-T11I" />
 
 	<script>
-		document.title="{{article_name}}"
+		document.title = "{{article_name}}"
 		function side_li_icon_click(self, identifier) {
 			var x = self.parent().children('ul');
 			// alert(self.prop('nodeName'))
@@ -24,11 +24,11 @@
 				let h = 0;
 				x.height(x.children().each(() => h += $(this).height()) + 'px');
 				x.css('opacity', 1);
-				x.css('pointer-events','inherit');
+				x.css('pointer-events', 'inherit');
 			} else {
 				x.height(0);
 				x.css('opacity', 0);
-				x.css('pointer-events','none');
+				x.css('pointer-events', 'none');
 			}
 		}
 		window.onload = () => {
@@ -47,8 +47,7 @@
 		<br />
 		<a id="title" href="/">0xC0DEF's Blog</a>
 		<br />
-		<img src="/static/cat.gif"
-			style="position:fixed; bottom:30px; right:30px; display:block;" />
+		<img src="/static/cat.gif" style="position:fixed; bottom:30px; right:30px; display:block; pointer-events:none;" />
 		{% macro make_menu(node) -%}
 		<li class="side_li">
 			{% if node.children %}
@@ -80,8 +79,8 @@
 			<h2>{{article_name}}</h2>
 			{% block content %}
 			{% endblock %}
-			<img src="/static/cat2.png" style="bottom:0px; right:0px; position:fixed;" />
-			<img src='/static/fox.png' style='left:5px;bottom:5px;position:fixed;' />
+			<img src="/static/cat2.png" style="bottom:0px;right:0px;position:fixed;pointer-events:none;" />
+			<img src='/static/fox.png' style='left:5px;bottom:5px;position:fixed;pointer-events:none;' />
 		</div>
 	</article>
 </body>
