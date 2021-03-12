@@ -7,7 +7,7 @@ h1{ font: 40px/46px BaseFont; /*color:red;*/}
 h2{ font: 35px/41px BaseFont; /*color:red;*/}
 h3{ font: 30px/36px BaseFont; /*color:red;*/}
 h4{ font: 25px/30px BaseFont; /*color:red;*/}
-p,li,a{ font: 20px/25px BaseFont; /*color:red;*/}
+p,li,a{ font: 20px/25px BaseFont; position: relative; z-index: 1; text-shadow: -2px -2px 0 #fff, 2px -2px 0 #fff, -2px 2px 0 #fff, 2px 2px 0 #fff; /*color:red;*/}
 
 .side_li{
 	margin-left:-20px;
