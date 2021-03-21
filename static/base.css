@@ -3,11 +3,40 @@
 	src: url("ConcertOne.ttf");
 }
 
-h1{ font: 40px/46px BaseFont; /*color:red;*/}
-h2{ font: 35px/41px BaseFont; /*color:red;*/}
-h3{ font: 30px/36px BaseFont; /*color:red;*/}
-h4{ font: 25px/30px BaseFont; /*color:red;*/}
-p,li,a{ font: 20px/25px BaseFont; position: relative; z-index: 1; text-shadow: -2px -2px 0 #fff, 2px -2px 0 #fff, -2px 2px 0 #fff, 2px 2px 0 #fff; /*color:red;*/}
+h1{
+	font: 40px/46px BaseFont;
+	margin:5px;
+	position: relative;
+	z-index: 1;
+	text-shadow: -2px -2px 0 #fff, 2px -2px 0 #fff, -2px 2px 0 #fff, 2px 2px 0 #fff;
+}
+h2{
+	font: 35px/41px BaseFont;
+	margin:5px;
+	position: relative;
+	z-index: 1;
+	text-shadow: -2px -2px 0 #fff, 2px -2px 0 #fff, -2px 2px 0 #fff, 2px 2px 0 #fff;
+}
+h3{
+	font: 30px/36px BaseFont;
+	margin:5px;
+	position: relative;
+	z-index: 1;
+	text-shadow: -2px -2px 0 #fff, 2px -2px 0 #fff, -2px 2px 0 #fff, 2px 2px 0 #fff;
+}
+h4{
+	font: 25px/30px BaseFont;
+	margin:5px;
+	position: relative;
+	z-index: 1;
+	text-shadow: -2px -2px 0 #fff, 2px -2px 0 #fff, -2px 2px 0 #fff, 2px 2px 0 #fff;
+}
+p,li,a{
+	font: 20px/25px BaseFont;
+	position: relative;
+	z-index: 1;
+	text-shadow: -2px -2px 0 #fff, 2px -2px 0 #fff, -2px 2px 0 #fff, 2px 2px 0 #fff;
+}
 
 .side_li{
 	margin-left:-20px;
@@ -19,6 +48,14 @@ p,li,a{ font: 20px/25px BaseFont; position: relative; z-index: 1; text-shadow: -
 .side_li_a{
 	text-decoration: none;
 	color: black;
+}
+
+.paragraph{
+	padding: 10px;
+	margin-top: 20px;
+	margin-bottom: 20px;
+	background-color:gainsboro/*beige blanchedalmond gainsboro*/;
+  border-radius: 10px;
 }
 
 #side_bar{
