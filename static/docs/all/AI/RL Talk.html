@@ -1,5 +1,6 @@
 {% extends "base.html" %}
 {% block content %}
+<div class="paragraph">
 <h3>추천 도서</h3>
 <ul>
 	<li>파이썬과 케라스로 배우는 강화학습 (이웅원, 양혁렬, 김건우, 이영무, 이의령 저)</li>
@@ -7,6 +8,9 @@
 	<li>강화학습 첫걸음 (아서 줄리아니 저)</li>
 	<li>Deep Reinforcement Learning in Action (Alexander Zai, Brandon Brown 저)</li>
 </ul>
+</div>
+
+<div class="paragraph">
 <h3>온라인 자료</h3>
 <p>DeepMind의 논문들 대부분이 arxiv에 올라와있으니 꼭 읽어보자. 내가 지금까지 보았던 논문들중 최고로 간결하고 친절하게 설명해준다. 심지어 짧다!!!</p>
 <ul>
@@ -22,8 +26,12 @@
 	<li><a href="https://ieee-cog.org/2019/papers/paper_50.pdf">A Generalized Framework for Self-Play Trainig</a><p>Self Play Reinforcement에 대한 몇 안되는 훌륭한 paper인듯.</p></li>
 	<li><a href="https://github.com/hongjun7/Reinforcement-Learning">좋은 논문과 컴팩트한 구현 모음. 역시 PS하던 사람이라 코드가 깔끔한듯</a></li>
 </ul>
+</div>
+
+<div class="paragraph">
 <p>강화학습을 처음 해보면 Model Free|Based, On|Off Policy, Value|Policy Iteration등등 헷갈리는게 많다. 각각이 뭘 의미하고 어떤 알고리즘이 해당되는지를 이해하자. 일단 내가 이해한대로 적어보자면 아래와 같다.</p>
 <p>On|Off policy: 탐험정책과 최적정책이 다르면 off 아니면 on이라는듯? 정확한건 다시 알아보자. On:SARSA,A3C,etc Off:DQN,DDPG,etc</p>
 <p>Model Free|Based: 알고리즘이 모델의 MDP를 요구하면 Based, 아니면 Free인듯. Based: MCTS,AlphaZero,etc Free:DQN,A2C,etc</p>
 <p>Value|Policy Iteration: 함수(표,신경망 등)가 그 상태(혹은 액션까지)의 가치를 표현하면 Value Iteration으로 학습하고 최적정책은 가치기댓값이 최대가 되는 액션이 된다. 함수가 정책자체를 표현하면 Policy Iteration으로 학습하고 최적정책은 신경망의 출력 그 자체가 된다. Value: DQN,DDPG,etc Policy:PPO Both:A3C,AlphaZero,etc</p>
+</div>
 {% endblock %}
