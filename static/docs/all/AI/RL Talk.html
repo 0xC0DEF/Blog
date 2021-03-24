@@ -27,11 +27,4 @@
 	<li><a href="https://github.com/hongjun7/Reinforcement-Learning">좋은 논문과 컴팩트한 구현 모음. 역시 PS하던 사람이라 코드가 깔끔한듯</a></li>
 </ul>
 </div>
-
-<div class="paragraph">
-<p>강화학습을 처음 해보면 Model Free|Based, On|Off Policy, Value|Policy Iteration등등 헷갈리는게 많다. 각각이 뭘 의미하고 어떤 알고리즘이 해당되는지를 이해하자. 일단 내가 이해한대로 적어보자면 아래와 같다.</p>
-<p>On|Off policy: 탐험정책과 최적정책이 다르면 off 아니면 on이라는듯? 정확한건 다시 알아보자. On:SARSA,A3C,etc Off:DQN,DDPG,etc</p>
-<p>Model Free|Based: 알고리즘이 모델의 MDP를 요구하면 Based, 아니면 Free인듯. Based: MCTS,AlphaZero,etc Free:DQN,A2C,etc</p>
-<p>Value|Policy Iteration: 함수(표,신경망 등)가 그 상태(혹은 액션까지)의 가치를 표현하면 Value Iteration으로 학습하고 최적정책은 가치기댓값이 최대가 되는 액션이 된다. 함수가 정책자체를 표현하면 Policy Iteration으로 학습하고 최적정책은 신경망의 출력 그 자체가 된다. Value: DQN,DDPG,etc Policy:PPO Both:A3C,AlphaZero,etc</p>
-</div>
 {% endblock %}
