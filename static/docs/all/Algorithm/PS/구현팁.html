@@ -1,18 +1,56 @@
 {% extends "base.html" %}
 {% block content %}
 <ol>
-  <li>
-  <p>(정적)Trie는 시간복잡도에 log를 더 붙여서, string sort + binary search + recursion으로 짤 수 있다. 단, 동적으로 추가/삭제가 일어나는건 Trie쓰는게 속편하다.</p>
-    <a href="https://www.acmicpc.net/source/share/766d622917b443b4b9145a47b10ab30e">example1</a>
-    <a href="https://www.acmicpc.net/source/share/ae3c7e985064405daa982dedf8616640">example2</a>
-  </li>
-  <li>
-    <p>BU DP할때 TD DP처럼 엣지케이스 처리하는 방법(0 base에서 -1참조할일 있을때 등 다양한곳에 활용가능)</p>
-    <p>int& f(int i, int j){ static int d[N][M], a=inf, b=0,c=-1; if(i==-1)return a; if(j==-1) return b; return d[i][j];}</p>
-    <p>f(i,j)=f(i-1,j)+f(i,j-1)</p>
-  </li>
 	<li>
-		<p>람다함수를 정의할때 std::function&lt;함수타입&gt;으로 저장하면 Recursion이 가능하다. 한 입력에 여러개의 테스트케이스가 들어오는 경우에 전역변수관리를 안해도 된다는 장점이 있다.</p>
+		<h4>Negative Index Array</h4>
+		<p>0base indexing</p>
+		<ul>
+			<li>
+				<p>장점: 직선구간의 계산이 깔끔하게 나온다.</p>
+			</li>
+			<li>
+				<p>단점1: base case가 인덱스-1을 가지는 경우가 많다. ex)부분합</p>
+			</li>
+			<li>
+				<p>단점2: 트리노드번호 계산이 깔끔하지 않다.</p>
+			</li>
+		</ul>
+		<p>1base indexing</p>
+		<ul>
+			<li>
+				<p>장점1: base case가 많은 경우에 0 이상이다.</p>
+			</li>
+			<li>
+				<p>장점2: 트리노드번호 계산이 깔끔하다.</p>
+			</li>
+			<li>
+				<p>단점: 직선구간의 계산이 깔끔하지 않다.</p>
+			</li>
+		</ul>
+		<p>많은 사람들이 상황따라 0base와 1base를 혼용한다. 그러나 나는 너무 헷갈려서 세그트리노드번호 이외에 1base는 사용하지 않는다. 지금까지는 int& f(i)=arr[i+1]; 이런 인덱스
+			조정함수를 통해 음수인덱스를 해결해왔는데, 최근에 Pythonic한 음수인덱스 지원하는 배열클래스 만들어 써보니까 굉장히 편하다. 일단 prefix sum과 suffix sum 이 둘의 선언과 사용이 거의
+			똑같아진다.</p>
+		<!-- HTML generated using hilite.me -->
+		<div
+			style="background: #ffffff; overflow:auto;width:auto;border:solid gray;border-width:.1em .1em .1em .8em;padding:.2em .6em;">
+			<pre style="margin: 0; line-height: 125%">Arr<span style="color: #333333">&lt;</span><span style="color: #333399; font-weight: bold">int</span><span style="color: #333333">&gt;</span> pf(n<span style="color: #333333">+</span><span style="color: #0000DD; font-weight: bold">1</span>),sf(n<span style="color: #333333">+</span><span style="color: #0000DD; font-weight: bold">1</span>);
+pf[i]<span style="color: #333333">=</span>pf[i<span style="color: #333333">-</span><span style="color: #0000DD; font-weight: bold">1</span>]<span style="color: #333333">+</span>a[i];
+sf[i]<span style="color: #333333">=</span>sf[i<span style="color: #333333">+</span><span style="color: #0000DD; font-weight: bold">1</span>]<span style="color: #333333">+</span>a[i];
+</pre>
+		</div>
+		</div>
+		<p>모듈러까지 추가해서 사용해봤는데, 심각하게 느려져서 모듈러는 제거했다.</p>
+	</li>
+	<li>
+		<h4>Lambda Recursion</h4>
+		<p>람다함수를 정의할때 std::function&lt;함수타입&gt;으로 저장하면 Recursion이 가능하다. 변수캡쳐 덕분에 전역변수를 안써도 되서 테케문제풀때 조금 더 안심이 된다.
+		</p>
+	</li>
+	<li>
+		<h4>Sort + Binary Search + Recursion = 정적Trie</h4>
+		<p>Trie쓰는 문제들은 문자열의 앞->뒤 순서로 그리디하게 진행하는 경우가 많다. 이 때, 앞->뒤 순서로 진행할 필요가 있을 뿐 중간에 삽입삭제가 없다면 미리 정렬해두고 이분탐색하며 재귀하는 방식으로 짜는게 좋다. 이 방식의 장점은 구현이 예쁘고, log가 붙지만 상수가 작아서 오히려 동적트라이보다 빠를 때가 많으며, 상당수의 Trie문제들이 메모리초과로 고통받는 경우가 있는데 이 방식은 공간복잡도에서 문자개수(26정도)가 제거되서 메모리걱정도 없다!</p>
+		<a href="https://www.acmicpc.net/source/share/766d622917b443b4b9145a47b10ab30e">example1</a>
+		<a href="https://www.acmicpc.net/source/share/ae3c7e985064405daa982dedf8616640">example2</a>
 	</li>
 </ol>
 {% endblock %}
