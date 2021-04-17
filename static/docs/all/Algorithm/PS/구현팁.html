@@ -42,12 +42,16 @@ sf[i]<span style="color: #333333">=</span>sf[i<span style="color: #333333">+</sp
 	</li>
 	<li>
 		<h4>Lambda Recursion</h4>
-		<p>람다함수를 정의할때 std::function&lt;함수타입&gt;으로 저장하면 Recursion이 가능하다. 변수캡쳐 덕분에 전역변수를 안써도 되서 테케문제풀때 조금 더 안심이 된다.
-		</p>
+		<p>람다함수를 정의할때 std::function&lt;함수타입&gt;으로 저장하면 Recursion이 가능하다. 전역변수를 지역변수캡쳐로 대체할 수 있어서 테케문제 풀때 편하다.</p>
 	</li>
 	<li>
 		<h4>Sort + Binary Search + Recursion = 정적Trie</h4>
-		<p>Trie쓰는 문제들은 문자열의 앞->뒤 순서로 그리디하게 진행하는 경우가 많다. 이 때, 앞->뒤 순서로 진행할 필요가 있을 뿐 중간에 삽입삭제가 없다면 미리 정렬해두고 이분탐색하며 재귀하는 방식으로 짜는게 좋다. 이 방식의 장점은 구현이 예쁘고, log가 붙지만 상수가 작아서 오히려 동적트라이보다 빠를 때가 많으며, 상당수의 Trie문제들이 메모리초과로 고통받는 경우가 있는데 이 방식은 공간복잡도에서 문자개수(26정도)가 제거되서 메모리걱정도 없다!</p>
+		<p>Trie쓰는 문제들은 문자열의 앞->뒤 순서로 그리디하게 진행하는 경우가 많다. 이 때, 앞->뒤 순서로 진행할 필요가 있을 뿐 중간에 삽입삭제가 없다면 미리 정렬해두고 이분탐색하며 재귀하는 방식으로 짜는게 좋다.</p>
+		<ul>
+			<li><p>실행시간 상수가 작아서 대부분의 경우 훨씬 빠름</p></li>
+			<li><p>트라이의 공간복잡도에서 문자종류(보통 알파벳 26개) factor가 제거되서 메모리최적화 효과가 있음</p></li>
+			<li><p>구현이 예쁘다</p></li>
+		</ul>
 		<a href="https://www.acmicpc.net/source/share/766d622917b443b4b9145a47b10ab30e">example1</a>
 		<a href="https://www.acmicpc.net/source/share/ae3c7e985064405daa982dedf8616640">example2</a>
 	</li>
