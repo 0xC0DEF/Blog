@@ -25,7 +25,7 @@ def robots():
 	return app.send_static_file('robots.txt')
 
 @app.route('/ads.txt')
-def robots():
+def ads():
 	return app.send_static_file('ads.txt')
 
 @app.route('/all')
