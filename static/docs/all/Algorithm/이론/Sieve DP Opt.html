@@ -1,0 +1,16 @@
+{% extends "base.html" %}
+{% block content %}
+<div class="paragraph">
+	<p>보통 DP값 계산할때, 이전에 계산된 값을 끌어모아 현재 값을 계산하는 방식을 사용한다. 그러나 이전값들을 계산할때마다 다음에 가능한 DP전이상태에 값을 뿌려주는 형태로도 계산이 가능하다. 이러한 방식의 값 뿌려주기 DP를 하면 sieve느낌의 최적화가 가능할 수 있다.</p>
+	<p>특히 게임이론 문제에서 자주 사용되는데, 어떠한 상태가 승리상태이려면 선택지중 하나라도 패배상태로 전이시켜줄 수 있어야 한다. 모든 선택지가 승리상태로 전이된다면 패배상태이다. 패배상태일 때마다 다음 전이상태를 승리상태로 바꿔 주는 뿌리기를 해줄 수 있으며, 승리상태에서는 뿌려줄것이 없다.</p>
+	<p>다음 전이상태가 배수관계라면 에라토스테네스의 체와 같은 복잡도 O(NloglogN)이 된다. 전이 상태가 다른 경우에 시간복잡도 계산이 좀 골치아파지는데, boj.kr/19595같은 경우 현재상태idx에 소수를 더한 값이 다음 전이상태가 된다. 시간복잡도를 대충 계산해보면 idx+소수가 다 겹친다고 볼때 O(N/logN*(N-N/logN))=O(N^2/logN) 정도인데, idx+소수가 안겹칠때도 있고, 작은범위에서는 소수개수가 더 많은 경향이 있으므로 저 Upper Bound보다는 빠르게 돌아가는 듯 하다.</p>
+	</p>
+	<p>관련 문제</p>
+	<ul>
+		<li><a href="http://boj.kr/16888">BOJ 16888 루트 게임</a></li>
+		<li><a href="http://boj.kr/3358">BOJ 3358 Towers of coins</a></li>
+		<li><a href="http://boj.kr/19595">BOJ 19595 소수 게임</a></li>
+		<li><a href="https://codeforces.com/contest/822/problem/D">CF422D My pretty girl Noora</a></li>
+	</ul>
+</div>
+{% endblock %}
