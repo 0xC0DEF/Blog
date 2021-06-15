@@ -11,10 +11,8 @@
 
 	<script>
 		document.title = "{{article_name}}"
-		function side_li_icon_click(self, identifier) {
-			var x = self.parent().children('ul');
-			// alert(self.prop('nodeName'))
-			// alert(self.cl
+		function side_li_icon_click(selfs, identifier) {
+			var x = selfs.parent().children('ul');
 			function getVal() {
 				var value = parseInt(localStorage.getItem(identifier))
 				if (isNaN(value)) value = 1
@@ -26,10 +24,12 @@
 				x.height(x.children().each(() => h += $(this).height()) + 'px');
 				x.css('opacity', 1);
 				x.css('pointer-events', 'inherit');
+				selfs[0].src="/static/side_li_close.png"
 			} else {
 				x.height(0);
 				x.css('opacity', 0);
 				x.css('pointer-events', 'none');
+				selfs[0].src="/static/side_li_open.png"
 			}
 		}
 		window.onload = () => {
