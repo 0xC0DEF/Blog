@@ -51,6 +51,10 @@ li{
 	margin-bottom: 7px;
 	list-style: none;
 }
+.click_padding{
+	margin-top: 12px;
+	margin-bottom: 12px;
+}
 
 .side_li_a{
 	text-decoration: none;
