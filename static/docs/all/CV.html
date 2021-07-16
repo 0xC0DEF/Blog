@@ -9,7 +9,7 @@
 	<a href="https://www.acmicpc.net/user/lobo_prix"><img src="https://www.acmicpc.net/favicon.ico"
 			style="width: 22px;" />Baekjoon OJ</a></br>
 	<a href="https://codeforces.com/profile/0xc0def"><img src="https://codeforces.com/favicon.ico"
-			style="width: 22px;" />Codeforces</a></br>
+			style="width: 22px;" />Codeforces</a><p id="cf_rating" style="display: inline-block; margin-left: 10px; color:blueviolet">Handle:0xC0DEF, Rating:, Max:1978</p></br>
 	<a href="https://atcoder.jp/users/lobo_prix"><img src="https://atcoder.jp/favicon.ico"
 			style="width: 22px;" />Atcoder</a></br>
 </div>
@@ -48,7 +48,7 @@
 				<a href="https://codingcompetitions.withgoogle.com/kickstart/round/0000000000435c44?scoreboard_type=South%20Korea">(RoundC 69th)</a>
 			</p>
 		</li>
-		<li><a href="https://osam.kr/board/read.jsp?id=4008&code=notice&page=4">2020 군장병 코딩경진대회 (2nd)</a></li>
+		<li><a href="https://programmers.co.kr/competitions/350/2020-practice-coding">2020 군장병 코딩경진대회 (2nd)</a></li>
 		<li>2020 SCPC Finalist</li>
 		<li>2018 숭고한(숭실고려한양) 알고리즘 연합캠프 Advanced Division (1st)</li>
 		<li>2018 SCON (1st, 팀 cat>/dev/null)</li>
@@ -90,10 +90,24 @@
 		<li><a href="https://codeforces.com/group/q4aFsZ9De9/blog/entry/6229">2020 숭고한 알고리즘 캠프 Marathon E번: 점 매칭</a></li>
 	</ul>
 	<p>바둑</p>
-	<ul><li>한큐바둑 1단</li></ul>
+	<ul>
+		<li>한큐바둑 0xC0DEF (2단)</li>
+		<li>타이젬 0xC0DEF (3급)</li>
+	</ul>
 	<p>동아리</p>
 	<ul>
-		<li>SCCC(Soongsil Computing Contest Club), 알고리즘 동아리</li>
+		<li>SCCC(Soongsil Computing Contest Club) [알고리즘]</li>
+		<li>숭실대학교 기우회 [바둑]</li>
 	</ul>
 </div>
+<script>
+	$.ajax({
+		type: "GET",
+		url: 'https://clist.by:443/api/v2/account/1433134/?username=lobo_prix&api_key=4cf64b36061ed0243a6729a001fa2522f7897202',
+		async:true,
+		dataType : 'jsonp',
+		crossDomain:true,
+		success: function(res, status, xhr){$('#cf_rating').text('Handle:0xC0DEF, Rating:'+res.rating + ', Max:1978')}
+	});
+</script>
 {% endblock %}

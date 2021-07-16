@@ -3,8 +3,9 @@
 <p>ps를 하다보면 여러가지 대수적 구조들을 만나게 되는데, 이것들을 잘 정리해두면 알고리즘이나 자료구조를 이해하는데 도움이 될 듯해 정리해본다.</p>
 
 <div class='paragraph'>
-<h2>Monoid</h2>
-<p>Segment Tree는 3-tuple[자료타입T, 쿼리모노이드 Q(Query Monoid), 업데이트모노이드 U(Update Monoid)]로 정의할 수 있다. Lazy Update의 경우 Q와U의 조합에 따라 lazy function이 달라지는데 아직 명확한 정리는 하지 못했다. 몇가지 조합은 레이지세그가 가능하며, 몇가지 조합은 레이지는 못해도 세그비츠가 가능하며, 어떤 조합은 (아직은) 효율적인 계산이 불가능하다.</p><a href='https://github.com/0xC0DEF/AlgoLib/blob/master/incl/Monoid.h'>Monoid</a><br/><a href='https://github.com/0xC0DEF/AlgoLib/blob/master/incl/Seg.h'>Segment Tree</a><br/><a href='https://github.com/0xC0DEF/AlgoLib/blob/master/incl/SegLazy.h'>Segment Tree Lazy</a>
+	<h2>Monoid</h2>
+	<p>Segment Tree는 3-tuple[자료타입T, 쿼리모노이드 Q(Query Monoid), 업데이트모노이드 U(Update Monoid)]로 정의할 수 있다. Lazy Update의 경우 Q와U의 조합에 따라 lazy function이 달라지는데 아직 명확한 정리는 하지 못했다. 몇가지 조합은 레이지세그가 가능하며, 몇가지 조합은 레이지는 못해도 세그비츠가 가능하며, 어떤 조합은 (아직은) 효율적인 계산이 불가능하다.</p><a href='https://github.com/0xC0DEF/AlgoLib/blob/master/incl/Monoid.h'>Monoid</a><br/><a href='https://github.com/0xC0DEF/AlgoLib/blob/master/incl/Seg.h'>Segment Tree</a><br/><a href='https://github.com/0xC0DEF/AlgoLib/blob/master/incl/SegLazy.h'>Segment Tree Lazy</a>
+	<p>U가 Group인게 충분조건은 되는듯.</p>
 </div>
 
 <div class='paragraph'>

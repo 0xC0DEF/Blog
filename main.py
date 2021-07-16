@@ -18,7 +18,7 @@ def build_category_tree(path, name):
 
 @app.route('/')
 def hello():
-	return render_template("main.html", category_root=build_category_tree("all", "all"), article_name='Welcome!!!')
+	return render_template("main.html", category_root=build_category_tree("all", "all"), article_name='0xC0DEF가 대충 만들어본 블로그')
 
 @app.route('/robots.txt')
 def robots():

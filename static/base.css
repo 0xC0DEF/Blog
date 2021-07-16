@@ -31,11 +31,18 @@ h4{
 	z-index: 1;
 	text-shadow: -2px -2px 0 #fff, 2px -2px 0 #fff, -2px 2px 0 #fff, 2px 2px 0 #fff;
 }
-p,li,a{
+p,a{
 	font: 20px/25px BaseFont;
 	position: relative;
 	z-index: 1;
 	text-shadow: -2px -2px 0 #fff, 2px -2px 0 #fff, -2px 2px 0 #fff, 2px 2px 0 #fff;
+}
+li{
+	font: 20px/25px BaseFont;
+	position: relative;
+	z-index: 1;
+	text-shadow: -2px -2px 0 #fff, 2px -2px 0 #fff, -2px 2px 0 #fff, 2px 2px 0 #fff;
+	margin-bottom: 5px;
 }
 
 .side_li{
@@ -43,6 +50,10 @@ p,li,a{
 	margin-top: 7px;
 	margin-bottom: 7px;
 	list-style: none;
+}
+.click_padding{
+	margin-top: 12px;
+	margin-bottom: 12px;
 }
 
 .side_li_a{

@@ -3,3 +3,4 @@ __pycache__/
 /setup.cfg
 env/
 run
+/mypy

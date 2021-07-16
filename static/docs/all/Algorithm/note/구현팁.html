@@ -1,53 +1,67 @@
 {% extends "base.html" %}
 {% block content %}
 <ol>
-	<li>
-		<h4>Negative Index Array</h4>
-		<p>많은 사람들이 상황따라 0base와 1base를 혼용한다. 그러나 나는 너무 헷갈려서 이진트리 노드번호 이외에 1base는 사용하지 않는다. 지금까지는 int& f(i)=arr[i+1]; 이런 인덱스
-			조정함수를 통해 음수인덱스를 해결해왔는데, 최근에 Pythonic한 음수인덱스 지원하는 배열클래스 만들어 써보니까 굉장히 편하다. 일단 prefix sum과 suffix sum 이 둘의 선언과 사용이 거의
-			똑같아진다.</p>
-		<!-- HTML generated using hilite.me -->
-		<div
-			style="background: #ffffff; overflow:auto;width:auto;border:solid gray;border-width:.1em .1em .1em .8em;padding:.2em .6em;">
-			<pre style="margin: 0; line-height: 125%">Arr<span style="color: #333333">&lt;</span><span style="color: #333399; font-weight: bold">int</span><span style="color: #333333">&gt;</span> pf(n<span style="color: #333333">+</span><span style="color: #0000DD; font-weight: bold">1</span>),sf(n<span style="color: #333333">+</span><span style="color: #0000DD; font-weight: bold">1</span>);
+	<div class="paragraph">
+		<li>
+			<h4>Negative Index Array</h4>
+			<p>많은 사람들이 상황따라 0base와 1base를 혼용한다. 그러나 나는 너무 헷갈려서 이진트리 노드번호 이외에 1base는 사용하지 않는다. 지금까지는 int& f(i)=arr[i+1]; 이런 인덱스
+				조정함수를 통해 음수인덱스를 해결해왔는데, 최근에 Pythonic한 음수인덱스 지원하는 배열클래스 만들어 써보니까 굉장히 편하다. 일단 prefix sum과 suffix sum 이 둘의 선언과 사용이
+				거의
+				똑같아진다.</p>
+			<!-- HTML generated using hilite.me -->
+			<div
+				style="background: #ffffff; overflow:auto;width:auto;border:solid gray;border-width:.1em .1em .1em .8em;padding:.2em .6em;">
+				<pre style="margin: 0; line-height: 125%">Arr<span style="color: #333333">&lt;</span><span style="color: #333399; font-weight: bold">int</span><span style="color: #333333">&gt;</span> pf(n<span style="color: #333333">+</span><span style="color: #0000DD; font-weight: bold">1</span>),sf(n<span style="color: #333333">+</span><span style="color: #0000DD; font-weight: bold">1</span>);
 pf[i]<span style="color: #333333">=</span>pf[i<span style="color: #333333">-</span><span style="color: #0000DD; font-weight: bold">1</span>]<span style="color: #333333">+</span>a[i];
 sf[i]<span style="color: #333333">=</span>sf[i<span style="color: #333333">+</span><span style="color: #0000DD; font-weight: bold">1</span>]<span style="color: #333333">+</span>a[i];
 </pre>
-		</div>
-		<p>모듈러까지 추가해서 사용해봤는데, 심각하게 느려져서 모듈러는 제거했다.</p>
-	</li>
-	<li>
-		<h4>Lambda Recursion</h4>
-		<p>람다함수를 정의할때 std::function&lt;함수타입&gt;으로 저장하면 Recursion이 가능하다. 전역변수를 지역변수캡쳐로 대체할 수 있어서 테케문제 풀때 편하다.</p>
-		<p>그냥 쓸 경우 함수의 타입을 두번 써야 하는게 귀찮은데, 아래의 코드처럼 매크로를 만들어두면 한번만 써도 된다.</p>
-		<!-- HTML generated using hilite.me --><div style="background: #ffffff; overflow:auto;width:auto;border:solid gray;border-width:.1em .1em .1em .8em;padding:.2em .6em;"><pre style="margin: 0; line-height: 125%"><span style="color: #0000ff">#include &lt;bits/stdc++.h&gt;</span>
-<span style="color: #0000ff">using</span> <span style="color: #0000ff">namespace</span> std;
-<span style="color: #0000ff">#define func(RetT,fname,...) function&lt;RetT(__VA_ARGS__)&gt; fname=[&amp;](__VA_ARGS__)-&gt;RetT</span>
-<span style="color: #2b91af">signed</span> main() {
-	<span style="color: #2b91af">int</span> z=5;
-	func(<span style="color: #2b91af">int</span>,f,<span style="color: #2b91af">int</span> x,<span style="color: #2b91af">int</span> y){<span style="color: #0000ff">return</span> (x+y)*z;};
-	cout&lt;&lt;f(3,4)&lt;&lt;endl;
-}
-</pre></div>
+			</div>
+			<p>모듈러까지 추가해서 사용해봤는데, 심각하게 느려져서 모듈러는 제거했다. 모듈러 자체도 느린데, const 아닌 모듈러는 더욱 느려서 납득할 수 없는 속도가 나온다.</p>
+			<p>다행히 음수인덱스만 지원할때는 조건분기(if나 ternary) 하나로 처리할 수 있어서 성능차이가 거의 없다.</p>
+			<a href="https://github.com/0xC0DEF/AlgoLib/blob/2b73ef36df2c7a2d0f6ea717a23bdda370bdca77/incl/core/base.h#L54">코드
+				(Line 54)</a>
+		</li>
+	</div>
+	<div class="paragraph">
+		<li>
+			<h4>Lambda Recursion</h4>
+			<p>람다함수를 정의할때 std::function&lt;함수타입&gt;으로 저장하면 Recursion이 가능하다. 전역변수를 지역변수캡쳐로 대체할 수 있어서 테케문제 풀때 편하다.</p>
+			<p>그냥 쓸 경우 함수의 타입을 두번 써야 하는게 넘 귀찮은데, 아래의 코드처럼 매크로를 만들어두면 한번만 써도 된다.</p>
+<!-- HTML generated using hilite.me --><div style="background: #ffffff; overflow:auto;width:auto;border:solid gray;border-width:.1em .1em .1em .8em;padding:.2em .6em;"><pre style="margin: 0; line-height: 125%"><span style="color: #557799">#include &lt;bits/stdc++.h&gt;</span>
+<span style="color: #008800; font-weight: bold">using</span> <span style="color: #008800; font-weight: bold">namespace</span> std;
+<span style="color: #557799">#define RETT(...) __VA_ARGS__</span>
+<span style="color: #557799">#define func(RetT,fname,...) function&lt;RetT(__VA_ARGS__)&gt; fname=[&amp;](__VA_ARGS__)-&gt;RetT</span>
+<span style="color: #333399; font-weight: bold">signed</span> <span style="color: #0066BB; font-weight: bold">main</span>(){
+	<span style="color: #333399; font-weight: bold">int</span> z<span style="color: #333333">=</span><span style="color: #0000DD; font-weight: bold">5</span>;
+	func(<span style="color: #333399; font-weight: bold">int</span>,f,<span style="color: #333399; font-weight: bold">int</span> x,<span style="color: #333399; font-weight: bold">int</span> y){<span style="color: #008800; font-weight: bold">return</span> (x<span style="color: #333333">+</span>y)<span style="color: #333333">*</span>z;};
+	cout<span style="color: #333333">&lt;&lt;</span>f(<span style="color: #0000DD; font-weight: bold">3</span>,<span style="color: #0000DD; font-weight: bold">4</span>)<span style="color: #333333">&lt;&lt;</span>endl;
 
-	</li>
-	<li>
-		<h4>Sort + Binary Search + Recursion = 정적Trie</h4>
-		<p>Trie쓰는 문제들은 문자열의 앞->뒤 순서로 그리디하게 진행하는 경우가 많다. 이 때, 앞->뒤 순서로 진행할 필요가 있을 뿐 중간에 삽입삭제가 없다면 미리 정렬해두고 이분탐색하며 재귀하는 방식으로
-			짜는게 좋다.</p>
-		<ul>
-			<li>
-				<p>실행시간 상수가 작아서 대부분의 경우 훨씬 빠름</p>
-			</li>
-			<li>
-				<p>트라이의 공간복잡도에서 문자종류(보통 알파벳 26개) factor가 제거되서 메모리최적화 효과가 있음</p>
-			</li>
-			<li>
-				<p>구현이 예쁘다</p>
-			</li>
-		</ul>
-		<a href="https://www.acmicpc.net/source/share/766d622917b443b4b9145a47b10ab30e">example1</a>
-		<a href="https://www.acmicpc.net/source/share/ae3c7e985064405daa982dedf8616640">example2</a>
-	</li>
+	func(RETT(pair<span style="color: #333333">&lt;</span><span style="color: #333399; font-weight: bold">int</span>,<span style="color: #333399; font-weight: bold">int</span><span style="color: #333333">&gt;</span>),g,pair<span style="color: #333333">&lt;</span><span style="color: #333399; font-weight: bold">int</span>,<span style="color: #333399; font-weight: bold">int</span><span style="color: #333333">&gt;</span> x){<span style="color: #008800; font-weight: bold">return</span> {x.first<span style="color: #333333">*</span>x.first,x.second<span style="color: #333333">*</span>x.second};};
+	<span style="color: #008800; font-weight: bold">auto</span> res<span style="color: #333333">=</span>g({<span style="color: #0000DD; font-weight: bold">3</span>,<span style="color: #0000DD; font-weight: bold">4</span>});
+	cout<span style="color: #333333">&lt;&lt;</span>res.first<span style="color: #333333">&lt;&lt;</span><span style="color: #0044DD">&#39; &#39;</span><span style="color: #333333">&lt;&lt;</span>res.second<span style="color: #333333">&lt;&lt;</span>endl;
+}</pre></div>
+			<p>두번째 예제의 경우 리턴타입을 RETT()매크로로 감싸줘야 하는데, 타입에 콤마(,)가 들어가면 인자가 쪼개져서 인식되기 때문이다.</p>
+		</li>
+	</div>
+	<div class="paragraph">
+		<li>
+			<h4>Sort + Binary Search + Recursion = 정적Trie</h4>
+			<p>Trie쓰는 문제들은 문자열의 앞->뒤 순서로 그리디하게 진행하는 경우가 많다. 이 때, 앞->뒤 순서로 진행할 필요가 있을 뿐 중간에 삽입삭제가 없다면 미리 정렬해두고 이분탐색하며 재귀하는 방식으로
+				짜는게 좋다.</p>
+			<ul>
+				<li>
+					<p>실행시간 상수가 작아서 대부분의 경우 훨씬 빠름</p>
+				</li>
+				<li>
+					<p>트라이의 공간복잡도에서 문자종류(보통 알파벳 26개) factor가 제거되서 메모리최적화 효과가 있음</p>
+				</li>
+				<li>
+					<p>구현이 예쁘다</p>
+				</li>
+			</ul>
+			<a href="https://www.acmicpc.net/source/share/766d622917b443b4b9145a47b10ab30e">예시1</a>
+			<a href="https://www.acmicpc.net/source/share/ae3c7e985064405daa982dedf8616640">예시2</a>
+		</li>
+	</div>
 </ol>
 {% endblock %}
