@@ -9,7 +9,7 @@
 	<a href="https://www.acmicpc.net/user/lobo_prix"><img src="https://www.acmicpc.net/favicon.ico"
 			style="width: 22px;" />Baekjoon OJ</a></br>
 	<a href="https://codeforces.com/profile/0xc0def"><img src="https://codeforces.com/favicon.ico"
-			style="width: 22px;" />Codeforces</a><p id="cf_rating" style="display: inline-block; margin-left: 10px; color:blueviolet">Handle:0xC0DEF, Rating:, Max:1978</p></br>
+			style="width: 22px;" />Codeforces</a><p id="cf_rating" style="display: inline-block; margin-left: 10px; color:blueviolet">CFINFO</p></br>
 	<a href="https://atcoder.jp/users/lobo_prix"><img src="https://atcoder.jp/favicon.ico"
 			style="width: 22px;" />Atcoder</a></br>
 </div>
@@ -103,11 +103,14 @@
 <script>
 	$.ajax({
 		type: "GET",
-		url: 'https://clist.by:443/api/v2/account/1433134/?username=lobo_prix&api_key=4cf64b36061ed0243a6729a001fa2522f7897202',
+		url: 'https://clist.by:443/api/v2/coder/10677/?username=lobo_prix&api_key=4cf64b36061ed0243a6729a001fa2522f7897202',
 		async:true,
 		dataType : 'jsonp',
 		crossDomain:true,
-		success: function(res, status, xhr){$('#cf_rating').text('Handle:0xC0DEF, Rating:'+res.rating + ', Max:1978')}
+		success: function(res, status, xhr){
+			let acc=res.accounts.find(x=>x.resource==='codeforces.com')
+			$('#cf_rating').text('Handle:'+acc.handle+', Rating:'+acc.rating)
+		}
 	});
 </script>
 {% endblock %}
