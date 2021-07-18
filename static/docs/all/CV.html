@@ -9,9 +9,10 @@
 	<a href="https://www.acmicpc.net/user/lobo_prix"><img src="https://www.acmicpc.net/favicon.ico"
 			style="width: 22px;" />Baekjoon OJ</a></br>
 	<a href="https://codeforces.com/profile/0xc0def"><img src="https://codeforces.com/favicon.ico"
-			style="width: 22px;" />Codeforces</a><p id="cf_rating" style="display: inline-block; margin-left: 10px; color:blueviolet">CFINFO</p></br>
-	<a href="https://atcoder.jp/users/lobo_prix"><img src="https://atcoder.jp/favicon.ico"
-			style="width: 22px;" />Atcoder</a></br>
+			style="width: 22px;" />Codeforces</a>
+			<p id="cf_info" style="display: inline-block; margin-left: 10px; color:blueviolet"></p></br>
+	<!-- <a href="https://atcoder.jp/users/lobo_prix"><img src="https://atcoder.jp/favicon.ico"
+			style="width: 22px;" />Atcoder</a></br> -->
 </div>
 
 <div class="paragraph">
@@ -109,7 +110,7 @@
 		crossDomain:true,
 		success: function(res, status, xhr){
 			let acc=res.accounts.find(x=>x.resource==='codeforces.com')
-			$('#cf_rating').text('Handle:'+acc.handle+', Rating:'+acc.rating)
+			$('#cf_info').text(acc.handle+' (Rating: '+acc.rating+')')
 		}
 	});
 </script>
