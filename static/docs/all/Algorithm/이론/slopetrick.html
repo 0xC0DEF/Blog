@@ -16,7 +16,7 @@
 </div>
 <div class='paragraph'>
 	<h2>유형</h2>
-	<p>f(i,x)=min(f(i-1,y))+(slopetrickable) 형태의 경우 Concave이면서 min(f(i-1,y))의 개형이 최솟값 오른쪽이 기울기0인 특징덕분에 PQ하나로 LeftHull만 관리해 풀 수 있다. BOJ수열1,2(13323번,13324번) https://codeforces.com/contest/713/problem/C</p>
+	<p>f(i,x)=min(f(i-1,y))+(기울기 절댓값 최대 1짜리 slopetrickable) 형태의 경우 Concave이면서 min(f(i-1,y))의 개형이 최솟값 오른쪽이 기울기0인 특징덕분에 PQ하나로 LeftHull만 관리해 풀 수 있다. BOJ수열1,2(13323번,13324번) https://codeforces.com/contest/713/problem/C</p>
 	<p>f(i,x)=min(f(i-1,y)+(slopetrickable))+(slopetrickable) 형태는 위와같은 특징이 유지되지 않기 때문에, 두개의 PQ로 최소구간 왼쪽,오른쪽 Hull을 관리하여 풀게 된다.</p>
 </div>
 <div class='paragraph'>
